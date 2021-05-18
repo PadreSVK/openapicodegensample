@@ -40,7 +40,8 @@ namespace Api.Controllers
         [HttpPost("formSample")]
         public Task Get2([FromForm]Item item)
         {
-            
+            _logger.LogInformation($"Name => {item.File.Name}");
+            _logger.LogInformation($"FileName => {item.File.FileName}");
             return Task.CompletedTask;
         }
 

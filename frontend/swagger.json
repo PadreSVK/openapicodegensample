@@ -28,7 +28,7 @@
         }
       }
     },
-    "/WeatherForecast/a": {
+    "/WeatherForecast/formSample": {
       "post": {
         "tags": [
           "WeatherForecast"

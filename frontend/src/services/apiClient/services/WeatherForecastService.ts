@@ -31,7 +31,7 @@ name?: string,
 }): Promise<any> {
         const result = await __request({
             method: 'POST',
-            path: `/WeatherForecast/a`,
+            path: `/WeatherForecast/formSample`,
             formData: {
                 'File': file,
                 'Name': name,
