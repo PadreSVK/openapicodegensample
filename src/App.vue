@@ -1,19 +1,40 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+
+    <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+     <button v-on:click="test()">Submit</button>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import HelloWorld from './components/HelloWorld.vue';
+import { WeatherForecastService, OpenAPI } from "./services/apiClient";
 
-export default {
-  name: 'App',
+@Component({
   components: {
-    HelloWorld
+    HelloWorld,
+  },
+    data() {
+        return {
+        file: undefined
+    }
+    },
+
+  methods:{
+      async test(){
+          OpenAPI.BASE = "https://localhost:5001"
+          WeatherForecastService.postWeatherForecastService({requestBody: (this as any ).file})
+
+      },
+      handleFileUpload(){
+        (this as any ).file = (this.$refs.file as any).files[0];
   }
-}
+  }
+})
+export default class App extends Vue {}
 </script>
 
 <style>
