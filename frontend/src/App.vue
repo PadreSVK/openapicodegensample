@@ -26,10 +26,7 @@ import { WeatherForecastService, OpenAPI } from "./services/apiClient";
   methods:{
       async test(){
           OpenAPI.BASE = "https://localhost:5001"
-          const formData = new FormData();
-        formData.append('file', (this as any ).file);
-          WeatherForecastService.postWeatherForecastService({requestBody: formData})
-
+          WeatherForecastService.postWeatherForecastService({file:(this as any ).file, name: "Fero" })
       },
       handleFileUpload(){
         (this as any ).file = (this.$refs.file as any).files[0];
