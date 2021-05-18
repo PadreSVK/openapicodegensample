@@ -23,14 +23,19 @@ export class WeatherForecastService {
      * @throws ApiError
      */
     public static async postWeatherForecastService({
-requestBody,
+file,
+name,
 }: {
-requestBody?: any,
+file?: Blob,
+name?: string,
 }): Promise<any> {
         const result = await __request({
             method: 'POST',
             path: `/WeatherForecast/a`,
-            body: requestBody,
+            formData: {
+                'File': file,
+                'Name': name,
+            },
         });
         return result.body;
     }
